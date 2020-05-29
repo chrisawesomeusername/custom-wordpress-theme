@@ -6,7 +6,7 @@
 
     <div class="comments-header">
 
-      <h2 class="comment-reply-title">
+      <h2 class="comment-reply-title mt-5">
         <?php
           if(! have_comments()){
             echo "Leave a Comment";
@@ -20,15 +20,9 @@
     </div><!-- .comments-header -->
 
     <div class="comments-inner">
-
-      <?php
-          wp_list_comments(
-            array(
-              'avatar_size' => 120,
-              'style' => 'div'
-            )
-          );
-      ?>
+      <ol>
+        <?php wp_list_comments("callback=mytheme_comment"); ?>
+      </ol>
 
 
     </div><!-- .comments-inner -->
@@ -36,15 +30,17 @@
   </div><!-- comments -->
 
   <hr class="" aria-hidden="true">
-  <?php
-    if (comments_open()) {
-      comment_form(
-        array(
-          'class_form' => '',
-          'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-          'title_replyy_after'  => '</h2>'
-        )
-      );
-    }
-  ?>
+  <div class="">
+    <?php
+      if (comments_open()) {
+        comment_form(
+          array(
+            'class_form' => '',
+            'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
+            'title_replyy_after'  => '</h2>'
+          )
+        );
+      }
+    ?>
+  </div>
 </div>
